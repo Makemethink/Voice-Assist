@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+   <title>Yupsilan</title>
+<style>
+*{margin: 0px;
+  padding: 0px;
+  }
+   .ham{
+       margin: 0%;
+       cursor: pointer;
+       background-color: black;
+       height: 50px;
+       width: 50px;
+       display: flex;
+       align-items: center;
+       flex-flow: column;
+       justify-content: center;
+       border-radius: 50%;
+       }
+     .ham div{
+       height:3px;
+       margin-bottom: 4px;
+       width:22px;
+       border-radius:5px;
+       background: #dadada;
+       transition: 0.3s ease;
+    }
+   .change .bar{
+     transition: transform 300ms ease-in-out;
+   }
+   .change #one{
+     transform: translateY(7px) rotate(45deg);
+   }
+   .change #three{
+     transform: translateY(-7px) rotate(-45deg);
+   }
+   .change #two{
+     opacity: 0;
+}
+  </style>
+  </head>
+
+  <body>
+      <div class="ham" id="id" onclick="funny()">
+       <div id="one" class="bar"></div>
+       <div id="two" class="bar"></div>
+       <div id="three" class="bar"></div></div>
+
+      <label for="reg">Speak Slowly</label>
+      <input type="text" id="box" placeholder="touch to recognize" onclick="record()">
+      <h3 class="content"></h3>
+<script type="text/javascript">
+  function funny(){
+    document.getElementById("id").classList.toggle("change");
+    document.getElementById("navs").classList.toggle("change");
+  }
+  function record(){
+       const recognition = new window.webkitSpeechRecognition();
+       const content = document.querySelector('.content');
+       recognition.lang = "en-GB";
+       recognition.onstart =
+       function(){
+             console.log('voice');
+          }
+      recognition.onresult= function(event){
+        const current = event.resultIndex;
+        const transcript = event.results[current][0].transcript;
+      content.textContent = transcript;
+      readOutLoud(transcript)
+
+
+  }
+  recognition.start();
+
+  function readOutLoud(message)
+  {
+    const speech = new SpeechSynthesisUtterance();
+    speech.text = message;
+    speech.volume=1;
+    speech.rate=1;
+    speech.pitch = 1;
+    window.speechSynthesis.speak(speech);
+  }
+  }
+</script>
+</body>
+</html>
