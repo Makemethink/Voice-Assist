@@ -41,14 +41,15 @@
   </style>
   </head>
 
-  <body>
+  <body id="perf">
+  
       <div class="ham" id="id" onclick="funny()">
        <div id="one" class="bar"></div>
        <div id="two" class="bar"></div>
        <div id="three" class="bar"></div></div>
 
       <label for="reg">Speak Slowly</label>
-      <input type="text" id="box" placeholder="touch to recognize" onclick="record()">
+      <input type="text" id="box" autofocus placeholder="touch to recognize" onclick="record()">
       <h3 class="content"></h3>
 <script type="text/javascript">
   function funny(){
@@ -81,6 +82,19 @@
     speech.rate=1;
     speech.pitch = 1;
     window.speechSynthesis.speak(speech);
+  
+  if(message=="white")
+  {
+          document.write("oops this is white");
+
+     
+  }
+  else{
+  document.getElementById("perf").style.background = message;
+      
+
+  }
+  
   }
   }
 </script>
