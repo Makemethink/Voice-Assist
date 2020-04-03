@@ -1,102 +1,129 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="en">
 <head>
-   <title>Yupsilan</title>
-<style>
-*{margin: 0px;
-  padding: 0px;
-  }
-   .ham{
-       margin: 0%;
-       cursor: pointer;
-       background-color: black;
-       height: 50px;
-       width: 50px;
-       display: flex;
-       align-items: center;
-       flex-flow: column;
-       justify-content: center;
-       border-radius: 50%;
-       }
-     .ham div{
-       height:3px;
-       margin-bottom: 4px;
-       width:22px;
-       border-radius:5px;
-       background: #dadada;
-       transition: 0.3s ease;
-    }
-   .change .bar{
-     transition: transform 300ms ease-in-out;
-   }
-   .change #one{
-     transform: translateY(7px) rotate(45deg);
-   }
-   .change #three{
-     transform: translateY(-7px) rotate(-45deg);
-   }
-   .change #two{
-     opacity: 0;
+
+  <title>Workshop</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <style>
+  body {
+    font: 20px Montserrat, sans-serif;
+    line-height: 1.8;
+
+
 }
+.fun{
+  background: none;
+  border: 1px solid #e2e2e2;
+  outline: none;
+  padding-top: 5px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 5px;
+}
+  .navbar {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border: 0;
+    border-radius: 0;
+    margin-bottom: 0;
+    font-size: 12px;
+    z-index: 10;
+    position: fixed;
+    width: 100%;
+    letter-spacing: 5px;
+  }
+
+
   </style>
-  </head>
+</head>
+<body>
 
-  <body id="perf">
-  
-      <div class="ham" id="id" onclick="funny()">
-       <div id="one" class="bar"></div>
-       <div id="two" class="bar"></div>
-       <div id="three" class="bar"></div></div>
 
-      <label for="reg">Speak Slowly</label>
-      <input type="text" id="box" autofocus placeholder="touch to recognize" onclick="record()">
-      <h3 class="content"></h3>
+<nav class="navbar navbar-default">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Workshop</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">We</a></li>
+        <li><a href="#">You</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+<div class="container-fluid bg-1 text-center ">
+   <h2 style="margin-top: 100px;"> NICE TO MEET YOU</h2> <br>
+   <input style="outline:none" class="btn btn-default btn-lg" type="button" id="box" onclick="record()" value="Tell me now" >
+</div><br>
+
+<div class="container bg-2 text-center">
+  <h3 class="margin">Description</h3>
+  <p class="content " style=" padding: 10px; margin-top:25px">Hello! guys this is my small try, this is a site which gets your voice and convert it to text. If you get boared to type like me you can use this. Don't worry this site doesn't takes your data. To start click the button above.</p>
+<br> <a href="index.html"> <button type="button" class="fun" name="button">Reset</button> </a>
+
+</div>
 <script type="text/javascript">
-  function funny(){
-    document.getElementById("id").classList.toggle("change");
-    document.getElementById("navs").classList.toggle("change");
-  }
-  function record(){
-       const recognition = new window.webkitSpeechRecognition();
-       const content = document.querySelector('.content');
-       recognition.lang = "en-GB";
-       recognition.onstart =
-       function(){
-             console.log('voice');
-          }
-      recognition.onresult= function(event){
-        const current = event.resultIndex;
-        const transcript = event.results[current][0].transcript;
-      content.textContent = transcript;
-      readOutLoud(transcript)
+function funny(){
+document.getElementById("id").classList.toggle("change");
+document.getElementById("navs").classList.toggle("change");
+}
+function record(){
+ const recognition = new window.webkitSpeechRecognition();
+ const content = document.querySelector('.content');
+ recognition.lang = "en-GB";
+ recognition.onstart =
+ function(){
+       console.log('voice');
+    }
+recognition.onresult= function(event){
+  const current = event.resultIndex;
+  const transcript = event.results[current][0].transcript;
+content.textContent = transcript;
+readOutLoud(transcript)
 
 
-  }
-  recognition.start();
+}
+recognition.start();
 
-  function readOutLoud(message)
-  {
-    const speech = new SpeechSynthesisUtterance();
-    speech.text = message;
-    speech.volume=1;
-    speech.rate=1;
-    speech.pitch = 1;
-    window.speechSynthesis.speak(speech);
-  
-  if(message=="white")
-  {
-          document.write("oops this is white");
+function readOutLoud(message)
+{
+const speech = new SpeechSynthesisUtterance();
+speech.text = message;
+speech.volume=1;
+speech.rate=1;
+speech.pitch = 1;
+window.speechSynthesis.speak(speech);
 
-     
-  }
-  else{
-  document.getElementById("perf").style.background = message;
-      
+if(message=="white")
+{
+    document.write("oops this is white");
 
-  }
-  
-  }
-  }
+
+}
+else{
+document.getElementById("perf").style.background = message;
+
+
+}
+
+}
+}
 </script>
+
+
 </body>
 </html>
