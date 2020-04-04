@@ -71,16 +71,17 @@
 
 
 <div class="container bg-1 text-center ">
-   <h2 style="margin-top: 100px;"> NICE TO MEET YOU</h2>
-   <p  style=" padding: 10px; margin-top:25px" >Hello! guys this is my small try, this is a site which gets your voice and convert it to text. If you get boared to type like me you can use this. Don't worry this site doesn't takes your data. To start click the button above.</p>
+   <h2 style="margin-top: 100px;"> NICE TO MEET YOU</h2><br>
 
    <input style="outline:none" class="btn btn-default btn-lg" type="button" id="box" onclick="record()" value="I'm ready" >
 </div><br>
 
 <div class="container bg-2 text-center">
   <h3 class="margin">Description</h3>
+  <p  style=" padding: 10px; margin-top:25px" id="her" >Hello! guys this is my small try, this is a site which gets your voice and convert it to text. If you get boared to type like me you can use this. Don't worry this site doesn't takes your data. To start click the button above.</p>
+
   <textarea name="name" class="content" id="here"style="border: none;outline: none; width:70% ;"></textarea>
-<br> <a href="index.html"> <button type="button" class="fun" name="button">Reset</button> </a>
+<br> <a href="index.html" style="text-decoration: none; color:#404040"> <button type="button" class="fun" name="button">Reset</button> </a>
 <button type="button" class="nun" onclick="myFunction()" name="butt" style="background:none;border: 1px solid #e2e2e2; outline: none; padding: 5px 15px 5px 15px">Copy</button>
 </div>
 <script type="text/javascript">
@@ -97,11 +98,13 @@ function record(){
  function(){
        console.log('voice');
     }
+    document.getElementById("her").style.display = "none";
 recognition.onresult= function(event){
   const current = event.resultIndex;
   const transcript = event.results[current][0].transcript;
 content.textContent = transcript;
 readOutLoud(transcript)
+
 
 
 }
