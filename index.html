@@ -1,3 +1,6 @@
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,8 +16,6 @@
   body {
     font: 20px Montserrat, sans-serif;
     line-height: 1.8;
-
-
 }
 .fun{
   background: none;
@@ -52,7 +53,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">Workshop</a>
+      <a class="navbar-brand" href="#">Voice Assist</a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav navbar-right">
@@ -65,16 +66,18 @@
 </nav>
 
 
-<div class="container-fluid bg-1 text-center ">
-   <h2 style="margin-top: 100px;"> NICE TO MEET YOU</h2> <br>
-   <input style="outline:none" class="btn btn-default btn-lg" type="button" id="box" onclick="record()" value="Tell me now" >
+<div class="container bg-1 text-center ">
+   <h2 style="margin-top: 100px;"> NICE TO MEET YOU</h2>
+   <p  style=" padding: 10px; margin-top:25px" >Hello! guys this is my small try, this is a site which gets your voice and convert it to text. If you get boared to type like me you can use this. Don't worry this site doesn't takes your data. To start click the button above.</p>
+
+   <input style="outline:none" class="btn btn-default btn-lg" type="button" id="box" onclick="record()" value="I'm ready" >
 </div><br>
 
 <div class="container bg-2 text-center">
   <h3 class="margin">Description</h3>
-  <p class="content " style=" padding: 10px; margin-top:25px">Hello! guys this is my small try, this is a site which gets your voice and convert it to text. If you get boared to type like me you can use this. Don't worry this site doesn't takes your data. To start click the button above.</p>
+  <p name="name" class="content" id="here"style="border: none;outline: none; width:70% ;"></p>
 <br> <a href="index.html"> <button type="button" class="fun" name="button">Reset</button> </a>
-
+<button type="button" class="nun" onclick="myFunction()" name="butt" style="background:none;border: 1px solid #e2e2e2; outline: none; padding: 5px 15px 5px 15px">Copy</button>
 </div>
 <script type="text/javascript">
 function funny(){
@@ -84,6 +87,7 @@ document.getElementById("navs").classList.toggle("change");
 function record(){
  const recognition = new window.webkitSpeechRecognition();
  const content = document.querySelector('.content');
+
  recognition.lang = "en-GB";
  recognition.onstart =
  function(){
@@ -108,19 +112,15 @@ speech.rate=1;
 speech.pitch = 1;
 window.speechSynthesis.speak(speech);
 
-if(message=="white")
-{
-    document.write("oops this is white");
-
-
 }
-else{
-document.getElementById("perf").style.background = message;
-
-
 }
 
-}
+function myFunction() {
+  var a = document.getElementById("here");
+  a.select();
+  a.setSelectionRange(0, 99999);
+  document.execCommand("copy");
+
 }
 </script>
 
